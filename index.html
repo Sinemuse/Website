@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sander Põldmaa — Portfolio</title>
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#111111;
+      --text:#f5f1ea;
+      --muted:rgba(245,241,234,.72);
+      --line:rgba(245,241,234,.12);
+      --accent:#d8c39a;
+      --max:1400px;
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{width:100%; display:block; object-fit:cover}
+    button{font:inherit}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(11,11,11,.82);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    nav a{
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    nav a:hover{color:var(--text)}
+
+    .menu-btn{
+      display:none;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+    }
+
+    .mobile-nav{
+      display:none;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 20px 16px;
+    }
+    .mobile-nav.open{display:block}
+    .mobile-nav a{
+      display:block;
+      padding:10px 0;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:13px;
+    }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:26px 20px 56px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:24px;
+      align-items:end;
+      padding:34px 0 26px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:26px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(44px, 7vw, 94px);
+      line-height:.92;
+      letter-spacing:-.05em;
+      text-transform:uppercase;
+    }
+
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:50ch;
+      font-size:15px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .pill{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    section{
+      padding:22px 0 34px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:16px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:clamp(24px, 3vw, 40px);
+      letter-spacing:-.03em;
+    }
+
+    .section-head span{
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    /* Intro */
+    .intro-card{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:6px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      overflow:hidden;
+      background:rgba(255,255,255,.02);
+    }
+
+    .intro-image{
+      min-height:420px;
+      background:var(--panel);
+    }
+
+    .intro-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .intro-content{
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .intro-content h2{
+      margin:0;
+      font-size:clamp(28px, 4vw, 54px);
+      line-height:.95;
+      letter-spacing:-.04em;
+      text-transform:uppercase;
+    }
+
+    .intro-content p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      max-width:48ch;
+    }
+
+    .intro-note{
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.06em;
+      margin-top:14px;
+    }
+
+    /* Video stack */
+    .video-stack{
+      display:grid;
+      gap:18px;
+    }
+
+    .video-card{
+      overflow:hidden;
+      border-radius:22px;
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.06);
+      aspect-ratio:16/9;
+    }
+
+    .video-card iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    .video-caption{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.06em;
+    }
+
+.reels-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin-top:24px;
+}
+
+.reels-grid video{
+    width:100%;
+    aspect-ratio:9/16;
+    object-fit:cover;
+
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.08);
+    background:#000;
+}
+    /* Photos */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+
+    .tile{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.05);
+      min-height:220px;
+      cursor:pointer;
+    }
+
+    .tile img{
+      height:100%;
+      transition:transform .45s ease, opacity .45s ease;
+      opacity:.96;
+    }
+
+    .tile:hover img{
+      transform:scale(1.03);
+      opacity:1;
+    }
+
+    .label{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(0,0,0,.52);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--text);
+      backdrop-filter: blur(10px);
+      max-width:calc(100% - 28px);
+    }
+
+    .w-6{grid-column:span 6}
+    .w-4{grid-column:span 4}
+    .w-3{grid-column:span 3}
+    .w-8{grid-column:span 8}
+    .tall{min-height:520px}
+    .mid{min-height:360px}
+    .small{min-height:220px}
+
+    /* About + contact */
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      padding-top:22px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .card h3{
+      margin:0 0 12px;
+      font-size:22px;
+    }
+
+    .card p,
+    .card li{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .contact-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:10px;
+    }
+
+    .contact-list a{
+      color:var(--text);
+      border-bottom:1px solid transparent;
+    }
+
+    .contact-list a:hover{
+      border-bottom-color:var(--accent);
+    }
+
+    footer{
+      padding:28px 0 8px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      font-size:13px;
+      letter-spacing:.06em;
+    }
+
+    /* Photo modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(0,0,0,.84);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.open{display:flex}
+
+    .modal-inner{
+      width:min(1100px, 100%);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:24px;
+      background:#0f0f0f;
+      overflow:hidden;
+      box-shadow:0 30px 120px rgba(0,0,0,.55);
+    }
+
+    .modal-media{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      background:#000;
+    }
+
+    .modal-media img{
+      width:auto;
+      height:auto;
+      max-width:100%;
+      max-height:82vh;
+      object-fit:contain;
+    }
+
+    .modal-body{
+      padding:16px 18px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .modal-title{
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--text);
+    }
+
+    .close-btn{
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 14px;
+      cursor:pointer;
+    }
+
+    @media (max-width: 900px){
+      .hero,
+      .about,
+      .intro-card{
+        grid-template-columns:1fr;
+      }
+
+      .intro-image{
+        min-height:300px;
+      }
+
+      .w-6,.w-4,.w-3,.w-8{
+        grid-column:span 12;
+      }
+
+      .tall,.mid,.small{
+        min-height:260px;
+      }
+
+      nav{display:none}
+      .menu-btn{display:inline-flex}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">OÜ Sinemuse</div>
+      <button class="menu-btn" id="menuBtn">Menu</button>
+      <nav>
+        <a href="#intro">Tutvustus</a>
+        <a href="#videos">Videod</a>
+        <a href="#photos">Fotod</a>
+        <a href="#about">Minust</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#intro">Tutvustus</a>
+      <a href="#videos">Videod</a>
+      <a href="#photos">Fotod</a>
+      <a href="#about">Minust</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Sander<br>Põldmaa</h1>
+      </div>
+    </section>
+
+    <section id="intro">
+      <div class="section-head">
+        <h2>Portfoolio</h2>
+      </div>
+
+      <div class="intro-card">
+        <div class="intro-image">
+          <img src="images/sannnn.jpg" alt="Sander Põldmaa">
+        </div>
+
+        <div class="intro-content">
+          <div>
+            <h2>Tutvustus</h2>
+            <p>
+              Olen visuaalne looja, kelle fookus on turundusvideotel, fotograafial ja droonitöödel. Olen töötanud 3 aastat turundus ja kommunikatsiooni valdkonnas ning alustasin ka eelmisel aastal vabakutselise videograafi karjääri luues enda ettevõtte. Läbi selle loon turundus- ja sotsiaalmeediavideoid teistele ettevõtetele ning organisatsioonidele. Vastutan kogu tootmisprotsessi eest - alates kliendisuhtlusest ja ideekavandist kuni filmimise, monteerimise ja valmislahenduseni. Olen teinud koostööd mitmete klientidega, sealhulgas Tallinna Ülikooliga, Tallinna Tehnikakõrgkooli, Inseneriakadeemia, Riigilaevastiku, Nordeconinga ja Barsmart OÜ-ga.
+            </p>
+          </div>
+            <div class="intro-note">
+              Lisaks tegelen hobikorras ka fotograafiaga. Allpool saab tutvuda minu parimate töödega.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="section-head">
+        <h2>Turundusvideod</h2>
+        <span>YouTube embeds</span>
+      </div>
+
+      <div class="video-stack">
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/tqVy0e40_E8"
+            title="Turundusvideo 1"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/EQvhazwMN9Q"
+            title="Turundusvideo 2"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-card">
+          <iframe
+            src="https://youtube.com/embed/tS5kerjAs7U"
+            title="Turundusvideo 3"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-card">
+          <iframe
+            src="https://youtube.com/embed/FYBjCYXpZj4"
+            title="Turundusvideo 4"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+<section id="shortform">
+  <div class="section-head">
+    <h2>Sotsiaalmeedia lühivideod</h2>
+    <span>Instagram Reels</span>
+  </div>
+
+  <div class="reels-grid">
+    <video controls playsinline poster="images/reel1.jpg">
+      <source src="videos/1.mov" type="video/mp4">
+    </video>
+
+    <video controls playsinline poster="images/reel2.jpg">
+      <source src="videos/2.mp4" type="video/mp4">
+    </video>
+
+    <video controls playsinline poster="images/reel3.jpg">
+      <source src="videos/3.mov" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+    <section id="photos">
+      <div class="section-head">
+        <h2>Fotograafia</h2>
+        <span>Pop-up galerii</span>
+      </div>
+
+      <div class="grid">
+        <a class="tile w-4 small photo-item" href="#" data-src="images/1.jpg" data-title="Iphone 17 pro">
+          <img src="images/1.jpg" alt="Foto 1">
+          <span class="label">Unistuste rand</span>
+        </a>
+
+        <a class="tile w-4 small photo-item" href="#" data-src="images/2.jpg" data-title="Iphone 17 pro">
+          <img src="images/2.jpg" alt="Foto 2">
+          <span class="label">Tiiger</span>
+        </a>
+
+        <a class="tile w-4 small photo-item" href="#" data-src="images/5.jpg" data-title="Sony a7iii + 24-105mm f4">
+          <img src="images/5.jpg" alt="Foto 3">
+          <span class="label">Kuldne Pühapäev</span>
+        </a>
+
+        <a class="tile w-6 mid photo-item" href="#" data-src="images/7.jpg" data-title="dji Mini 3">
+          <img src="images/7.jpg" alt="Foto 4">
+          <span class="label">Maailma tipp</span>
+        </a>
+
+        <a class="tile w-6 mid photo-item" href="#" data-src="images/8.jpg" data-title="DJI Mini 3">
+          <img src="images/8.jpg" alt="Foto 5">
+          <span class="label">Lõhe</span>
+        </a>
+      </div>
+       <div class="grid">
+        <a class="tile w-4 small photo-item" href="#" data-src="images/12.jpg" data-title="Canon D6 + 16-34mm f4">
+          <img src="images/12.jpg" alt="Foto 1">
+          <span class="label">Lähme Minema Siit</span>
+        </a>
+
+        <a class="tile w-4 small photo-item" href="#" data-src="images/3.jpg" data-title="Iphone 17 pro">
+          <img src="images/3.jpg" alt="Foto 2">
+          <span class="label">Budapest</span>
+        </a>
+
+        <a class="tile w-4 small photo-item" href="#" data-src="images/11.jpg" data-title="Sony a7RIV + 50mm f1.2">
+          <img src="images/11.jpg" alt="Foto 3">
+          <span class="label">Üks Suund</span>
+        </a>
+
+        <a class="tile w-6 mid photo-item" href="#" data-src="images/10.png" data-title="DJI Air 3">
+          <img src="images/10.png" alt="Foto 4">
+          <span class="label">Jäämurdja</span>
+        </a>
+
+        <a class="tile w-6 mid photo-item" href="#" data-src="images/6.jpg" data-title="Dji Mavic 3 Pro">
+          <img src="images/6.jpg" alt="Foto 5">
+          <span class="label">Soojus</span>
+        </a>
+      </div>
+    </section>
+
+      <div class="card" id="contact">
+        <h3>Kontakt</h3>
+        <ul class="contact-list">
+          <li><a href="mailto:sander@example.com">sander@example.com</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 Sander Põldmaa</div>
+      <div>Portfolio</div>
+    </footer>
+  </main>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-inner" role="dialog" aria-modal="true" aria-label="Gallery preview">
+      <div class="modal-media" id="modalMedia"></div>
+      <div class="modal-body">
+        <div class="modal-title" id="modalTitle">Preview</div>
+        <button class="close-btn" id="closeBtn">Sulge</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    const modal = document.getElementById('modal');
+    const modalMedia = document.getElementById('modalMedia');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.getElementById('closeBtn');
+
+    btn?.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    nav?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => nav.classList.remove('open'));
+    });
+
+    function openModal(content, title){
+      modalTitle.textContent = title || 'Preview';
+      modalMedia.innerHTML = content;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalMedia.innerHTML = '';
+    }
+
+    document.querySelectorAll('.photo-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const src = item.dataset.src;
+        const title = item.dataset.title || 'Foto';
+        openModal(`<img src="${src}" alt="${title}">`, title);
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
