@@ -265,20 +265,25 @@
 
 .reels-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(3, minmax(220px, 1fr));
     gap:24px;
     margin-top:24px;
 }
 
-.reels-grid video{
+.short-card{
     width:100%;
     aspect-ratio:9/16;
-    object-fit:cover;
-
-    border-radius:18px;
+    overflow:hidden;
+    border-radius:20px;
     border:1px solid rgba(255,255,255,.08);
-    background:#000;
 }
+
+.short-card iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
     /* Photos */
     .grid{
       display:grid;
@@ -520,7 +525,12 @@
           <div>
             <h2>Tutvustus</h2>
             <p>
-              Olen visuaalne looja, kelle fookus on turundusvideotel, fotograafial ja droonitöödel. Olen töötanud 3 aastat turundus ja kommunikatsiooni valdkonnas ning alustasin ka eelmisel aastal vabakutselise videograafi karjääri luues enda ettevõtte. Läbi selle loon turundus- ja sotsiaalmeediavideoid teistele ettevõtetele ning organisatsioonidele. Vastutan kogu tootmisprotsessi eest - alates kliendisuhtlusest ja ideekavandist kuni filmimise, monteerimise ja valmislahenduseni. Olen teinud koostööd mitmete klientidega, sealhulgas Tallinna Ülikooliga, Tallinna Tehnikakõrgkooli, Inseneriakadeemia, Riigilaevastiku, Nordeconinga ja Barsmart OÜ-ga.
+              <br>"Usun, et hea video ei näe lihtsalt ilus välja - see aitab ettevõttel jõuda õigete inimesteni ja jutustada lugu, mis jääb meelde."<br><br>Olen visuaalne sisulooja, kelle fookus on turundusvideotel, fotograafial ja droonivõtetel. Ühendan loovuse, tehnilise täpsuse ja turundusliku mõtteviisi, et luua sisu, mis toetab ettevõtte eesmärke ning kõnetab sihtrühma.<br>
+
+Olen töötanud üle kolme aasta turunduse ja kommunikatsiooni valdkonnas ning asutasin oma videoproduktsiooni ettevõtte, mille kaudu loon turundus- ja sotsiaalmeediavideoid ettevõtetele ja organisatsioonidele.<br> <br>Vastutan kogu tootmisprotsessi eest - alates idee väljatöötamisest kuni filmimise, monteerimise ja lõpliku valmislahenduseni.
+
+Olen teinud koostööd mitmete ettevõtete ja organisatsioonidega, sealhulgas Tallinna Ülikooli, Tallinna Tehnikakõrgkooli, Inseneriakadeemia, Riigilaevastiku, Nordeconi ja Barsmart OÜ-ga. Minu eesmärk on luua kvaliteetset visuaalset sisu, mis aitab klientidel oma brändi kasvatada, suurendada nähtavust ja jätta professionaalne esmamulje.
+
             </p>
           </div>
             <div class="intro-note">
@@ -533,7 +543,7 @@
 
     <section id="videos">
       <div class="section-head">
-        <h2>Turundusvideod</h2>
+        <h2>Videograafia</h2>
         <span>YouTube embeds</span>
       </div>
 
@@ -541,27 +551,7 @@
         <div class="video-card">
           <iframe
             src="https://www.youtube.com/embed/tqVy0e40_E8"
-            title="Turundusvideo 1"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <div class="video-card">
-          <iframe
-            src="https://www.youtube.com/embed/EQvhazwMN9Q"
-            title="Turundusvideo 2"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <div class="video-card">
-          <iframe
-            src="https://youtube.com/embed/tS5kerjAs7U"
-            title="Turundusvideo 3"
+            title="Riigilaevastik"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -571,7 +561,7 @@
         <div class="video-card">
           <iframe
             src="https://youtube.com/embed/FYBjCYXpZj4"
-            title="Turundusvideo 4"
+            title="Pulmavideo"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -579,25 +569,58 @@
         </div>
       </div>
 
+         <div class="video-card">
+          <iframe
+            src="https://youtube.com/embed/tS5kerjAs7U"
+            title="Fly High 8.0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/EQvhazwMN9Q"
+            title="Põhjala"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
 <section id="shortform">
   <div class="section-head">
     <h2>Sotsiaalmeedia lühivideod</h2>
     <span>Instagram Reels</span>
   </div>
 
-  <div class="reels-grid">
-    <video controls playsinline poster="images/reel1.jpg">
-      <source src="videos/1.mov" type="video/mp4">
-    </video>
+    <div class="reels-grid">
 
-    <video controls playsinline poster="images/reel2.jpg">
-      <source src="videos/2.mp4" type="video/mp4">
-    </video>
+        <div class="short-card">
+            <iframe
+                src="https://www.youtube.com/embed/wuQrF3qB-jg"
+                title="Short 1"
+                allowfullscreen>
+            </iframe>
+        </div>
 
-    <video controls playsinline poster="images/reel3.jpg">
-      <source src="videos/3.mov" type="video/mp4">
-    </video>
-  </div>
+        <div class="short-card">
+            <iframe
+                src="https://www.youtube.com/embed/rFfV3cPbiuQ"
+                title="Short 2"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+         <div class="short-card">
+            <iframe
+                src="https://www.youtube.com/embed/xHr5KoNBazI"
+                title="Short 2"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
 </section>
 
     <section id="photos">
@@ -663,8 +686,8 @@
       <div class="card" id="contact">
         <h3>Kontakt</h3>
         <ul class="contact-list">
-          <li><a href="mailto:sander@example.com">sander@example.com</a></li>
-          <li><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a href="mailto:sander@example.com">sander.poldmaa@gmail.com</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram: @sanderpoldmaa</a></li>
         </ul>
       </div>
     </section>
